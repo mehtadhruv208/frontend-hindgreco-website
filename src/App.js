@@ -3,6 +3,11 @@ import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
+import WhoWeAre from "./components/WhoWeAre";
+import OurTechnologies from "./components/OurTechnologies";
+import Careers from "./components/Careers";
+import News from "./components/News";
+import Support from "./components/Support";
 
 const AppLayout = () => {
     return (
@@ -24,8 +29,35 @@ const appRouter = createBrowserRouter([
                 element: <Body />
                 
             },
+            {
+                path: "/company-info",
+                element: <WhoWeAre />
+                
+            },
+            {
+                path: "/technologies",
+                element: <OurTechnologies />
+                
+            },
+            {
+                path: "/careers",
+                element: <Careers />
+                
+            },
+            {
+                path: "/news",
+                element: <News />
+                
+            },
+            {
+                path: "/support",
+                element: <Support />
+                
+            },
             
-        ]
+        ],
+    errorElement: <Error />
+
     }
 ]);
 

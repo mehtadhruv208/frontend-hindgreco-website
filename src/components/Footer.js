@@ -1,9 +1,66 @@
+import {
+    FaDribbbleSquare,
+    FaFacebookSquare,
+    FaGithubSquare,
+    FaInstagram,
+    FaTwitterSquare,
+  } from 'react-icons/fa';
+
+  const SocialIcon = ({ icon: Icon }) => (
+    <Icon className="social-icon hover:text-[#00df9a]" size={30} />
+  );
+
 const Footer = () => {
+
+    const items = [
+        // Social media icons
+        { type: 'icon', icon: FaFacebookSquare },
+        { type: 'icon', icon: FaInstagram },
+        { type: 'icon', icon: FaTwitterSquare },
+        { type: 'icon', icon: FaGithubSquare },
+        // Footer sections
+        { type: 'section', title: 'Solutions', items: ['Analytics', 'Marketing', 'Commerce', 'Insights'] },
+        { type: 'section', title: 'Privacy & Governance', items: ['Privacy Policy', 'Documentation', 'Guides'] },
+        { type: 'section', title: 'Company', items: ['About', 'Blog', 'Jobs', 'Press', 'Careers'] },
+        { type: 'section', title: 'Legal', items: ['Claim', 'Policy', 'Terms'] },
+      ];
+
     return (
-        <div>
-            <h1>Footer Component</h1>
+        <div className='bg-[#000300] mx-auto py-16 px-4 grid lg:grid-cols-3 gap-8 text-gray-300'>
+          {/* Left section with brand and social icons */}
+          <div>
+            <h1 className='w-full text-3xl lg:text-4xl xl:text-5xl font-bold text-[#00df9a]'>Hindgreco</h1>
+            <p className='py-4'>
+            Transforming society’s habits to keep valuable resources in a continuous loop of use and reuse.
+            </p>
+            <div className='flex justify-between md:w-[75%] my-6'>
+              {/* Mapping over social icons and rendering the SocialIcon component */}
+              {items.map((item, index) => (
+                item.type === 'icon' ? (
+                  <SocialIcon key={index} icon={item.icon} />
+                ) : null
+              ))}
+            </div>
+          </div>
+          {/* Right section with footer content organized in sections */}
+          <div className='lg:col-span-2 flex justify-between mt-6'>
+            {/* Mapping over sections and rendering content */}
+            {items.map((item, index) => (
+              item.type === 'section' ? (
+                <div key={index}>
+                  <h6 className="font-medium text-gray-100 text-xl">{item.title}</h6>
+                  <ul>
+                    {/* Mapping over items in each section */}
+                    {item.items.map((subItem, subIndex) => (
+                      <li key={subIndex} className='py-2 text-sm'>{subItem}</li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null
+            ))}
+          </div>
         </div>
-    )
+      );
 };
 
 export default Footer;
